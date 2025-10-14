@@ -60,4 +60,16 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZ...
 
 Cloudflare API Token: _v50mev50me.......
 
-<br><br><br>
+<br>
+
+
+
+## 如果要卸载，请执行
+
+```bash
+~/.acme.sh/acme.sh --uninstall
+
+```
+
+
+<br><br>
