@@ -17,11 +17,16 @@ read -p "请输入要签发的域名（如 example.com）: " Domain
 export CF_Token="$CF_Token"
 
 # 安装 acme.sh（如果未安装）
-if ! command -v acme.sh >/dev/null 2>&1; then
-    echo "正在安装 acme.sh..."
+if [ ! -d "$HOME/.acme.sh" ]; then
+    echo "[+] 安装 acme.sh..."
     curl https://get.acme.sh | sh
+    # 让 acme.sh 立即可用
     source ~/.bashrc
+    export PATH="$HOME/.acme.sh:$PATH"
 fi
+
+# 确保 acme.sh 命令可用
+export PATH="$HOME/.acme.sh:$PATH"
 
 # 固定为 Let's Encrypt
 echo "[+] 设置默认 CA 为 Let's Encrypt..."
