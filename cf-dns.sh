@@ -1,6 +1,6 @@
 #!/bin/bash
 # 一键交互式签发单域名证书 (Cloudflare DNS-01)
-# 作者: Mouse 定制交互版
+# 作者: lisi-123
 
 echo "============================"
 echo " Cloudflare DNS 签发证书"
