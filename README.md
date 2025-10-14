@@ -58,6 +58,6 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZ...
 
 这个就是脚本要填入的：
 
-Cloudflare API Token="eyJhbGciOiJI..."
+Cloudflare API Token: _v5Omev5Ome.......
 
 <br><br><br>
