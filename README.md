@@ -26,11 +26,9 @@ Cloudflare 的 API Token 是一串密钥，允许脚本自动操作你的 Cloudf
 
 👉 https://dash.cloudflare.com/profile/api-tokens
 
-<br>
 
 ② 点击 “创建令牌”
 
-<br>
 
 ③ 选择模板：
 
@@ -40,7 +38,6 @@ Cloudflare 的 API Token 是一串密钥，允许脚本自动操作你的 Cloudf
 
 然后点 “使用模板”
 
-<br>
 
 ④ 设置权限与范围：
 
@@ -48,11 +45,9 @@ Cloudflare 的 API Token 是一串密钥，允许脚本自动操作你的 Cloudf
 
 其他内容保持默认即可
 
-<br>
 
 ⑤ 点击底部的 “继续以显示摘要”
 
-<br>
 
 ⑥ 复制生成的 Token，一串字母数字，比如：
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZ...
