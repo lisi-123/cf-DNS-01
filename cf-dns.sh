@@ -43,7 +43,3 @@ echo "/root/.acme.sh/${Domain}_ecc/${Domain}.key"
 echo "/root/.acme.sh/${Domain}_ecc/fullchain.cer"
 echo
 echo "acme.sh 已自动添加续期任务。"
-echo "如需查看详细信息，可执行："
-echo "  ~/.acme.sh/acme.sh --info -d $Domain"
-
-
