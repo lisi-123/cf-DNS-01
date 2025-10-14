@@ -22,15 +22,15 @@ Cloudflare 的 API Token 是一串密钥，允许脚本自动操作你的 Cloudf
 
 ## 🧭 二、获取步骤（新版界面）
 
-① 登录 Cloudflare 控制台
+1.登录 Cloudflare 控制台
 
 👉 https://dash.cloudflare.com/profile/api-tokens
 
 
-② 点击 “创建令牌”
+2.点击 “创建令牌”
 
 
-③ 选择模板：
+3.选择模板：
 
 在“API 令牌模板”中，找到
 
@@ -39,19 +39,20 @@ Cloudflare 的 API Token 是一串密钥，允许脚本自动操作你的 Cloudf
 然后点 “使用模板”
 
 
-④ 设置权限与范围：
+4.设置权限与范围：
 
 “特定区域”改为“所有区域”
 
 其他内容保持默认即可
 
 
-⑤ 点击底部的 “继续以显示摘要”
+5.点击底部的 “继续以显示摘要”
 
 
-⑥ 复制生成的 Token，一串字母数字，比如：
+6.复制并保存生成的 Token，一串字母数字，比如：
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZ...
 
+这个Token只会显示一次，请妥善保存
 
 这个就是脚本要填入的：
 
