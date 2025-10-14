@@ -70,6 +70,7 @@ Cloudflare API Token: _v50mev50me.......
 ~/.acme.sh/acme.sh --uninstall
 rm -rf ~/.acme.sh
 sed -i '/acme.sh/d' ~/.bashrc
+source ~/.bashrc
 
 ```
 
