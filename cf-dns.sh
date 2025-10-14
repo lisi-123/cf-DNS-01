@@ -1,41 +1,53 @@
 #!/bin/bash
-# 一键签发 Cloudflare 泛域名证书脚本
-# 仅需设置一次 API Token，其余全自动
+# 一键交互式签发单域名证书 (Cloudflare DNS-01)
+# 作者: Mouse 定制交互版
 
-# ======= 用户设置 =======
-CF_Token="你的CloudflareAPIToken"
-Domain="example.com"              # 你的主域名
-CertPath="/root/certs"            # 证书保存目录
-# ========================
+echo "============================"
+echo " Cloudflare DNS 签发证书"
+echo "============================"
+echo ""
 
-# 安装 acme.sh（如果未安装）
+# 用户交互输入
+read -p "请输入 Cloudflare API Token: " CF_Token
+read -p "请输入要签发证书的域名 (例如 example.com): " Domain
+CertPath="/root/certs"
+
+echo ""
+echo ">>> 使用 Cloudflare Token: $CF_Token"
+echo ">>> 目标域名: $Domain"
+echo ">>> 证书目录: $CertPath"
+echo ""
+
+# 检查 acme.sh 是否安装
 if ! command -v acme.sh &>/dev/null; then
     echo "正在安装 acme.sh ..."
     curl https://get.acme.sh | sh
     source ~/.bashrc
 fi
 
-# 设置 Cloudflare 环境变量
+# 设置环境变量
 export CF_Token="$CF_Token"
-export CF_Account_ID=""  # 可空，不必填写
+export CF_Account_ID=""
 export CF_Zone_ID=""
 
-# 创建证书保存目录
+# 创建目录
 mkdir -p "$CertPath"
 
-# 使用 Cloudflare DNS 自动签发泛域名证书
+# 签发证书
 ~/.acme.sh/acme.sh --issue \
   --dns dns_cf \
-  -d "$Domain" -d "*.$Domain" \
+  -d "$Domain" \
   --keylength ec-256 \
   --server letsencrypt
 
-# 安装证书（复制到指定目录）
+# 安装证书
 ~/.acme.sh/acme.sh --install-cert -d "$Domain" \
   --ecc \
   --key-file       "$CertPath/$Domain.key" \
   --fullchain-file "$CertPath/fullchain.cer"
 
-echo "✅ 证书签发完成"
-echo "路径：$CertPath"
+echo ""
+echo "✅ 证书签发完成！"
+echo "证书文件已保存至：$CertPath"
 ls -lh "$CertPath"
+
