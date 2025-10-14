@@ -7,47 +7,34 @@ echo " Cloudflare DNS 签发证书"
 echo "============================"
 echo ""
 
-# 用户交互输入
+#!/bin/bash
+
+echo "=== Cloudflare DNS-01 一键签证书脚本 ==="
 read -p "请输入 Cloudflare API Token: " CF_Token
-read -p "请输入要签发证书的域名 (例如 example.com): " Domain
-CertPath="/root/certs"
+read -p "请输入要签发的域名（如 example.com）: " Domain
 
-echo ""
-echo ">>> 使用 Cloudflare Token: $CF_Token"
-echo ">>> 目标域名: $Domain"
-echo ">>> 证书目录: $CertPath"
-echo ""
+# 设置 Cloudflare Token 环境变量
+export CF_Token="$CF_Token"
 
-# 检查 acme.sh 是否安装
-if ! command -v acme.sh &>/dev/null; then
-    echo "正在安装 acme.sh ..."
+# 安装 acme.sh（如果未安装）
+if ! command -v acme.sh >/dev/null 2>&1; then
+    echo "正在安装 acme.sh..."
     curl https://get.acme.sh | sh
     source ~/.bashrc
 fi
 
-# 设置环境变量
-export CF_Token="$CF_Token"
-export CF_Account_ID=""
-export CF_Zone_ID=""
+# 使用 Cloudflare DNS 申请证书
+~/.acme.sh/acme.sh --issue --dns dns_cf -d "$Domain" --keylength ec-256
 
-# 创建目录
-mkdir -p "$CertPath"
+# 显示证书路径
+echo
+echo "=== 签发完成！证书已生成 ==="
+echo "默认证书路径如下："
+echo "~/.acme.sh/${Domain}_ecc/${Domain}.key"
+echo "~/.acme.sh/${Domain}_ecc/fullchain.cer"
+echo
+echo "acme.sh 已自动添加续期任务。"
+echo "如需查看详细信息，可执行："
+echo "  ~/.acme.sh/acme.sh --info -d $Domain"
 
-# 签发证书
-~/.acme.sh/acme.sh --issue \
-  --dns dns_cf \
-  -d "$Domain" \
-  --keylength ec-256 \
-  --server letsencrypt
-
-# 安装证书
-~/.acme.sh/acme.sh --install-cert -d "$Domain" \
-  --ecc \
-  --key-file       "$CertPath/$Domain.key" \
-  --fullchain-file "$CertPath/fullchain.cer"
-
-echo ""
-echo "✅ 证书签发完成！"
-echo "证书文件已保存至：$CertPath"
-ls -lh "$CertPath"
 
