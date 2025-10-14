@@ -20,6 +20,8 @@ Cloudflare 的 API Token 是一串密钥，允许脚本自动操作你的 Cloudf
 
 ⚠️ 它只需要有「编辑 DNS 记录」权限，不必给整个账号权限。
 
+<br>
+
 ## 🧭 二、获取步骤（新版界面）
 
 1.登录 Cloudflare 控制台
