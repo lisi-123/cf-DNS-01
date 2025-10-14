@@ -23,6 +23,10 @@ if ! command -v acme.sh >/dev/null 2>&1; then
     source ~/.bashrc
 fi
 
+# 固定为 Let's Encrypt
+echo "[+] 设置默认 CA 为 Let's Encrypt..."
+acme.sh --set-default-ca --server letsencrypt
+
 # 使用 Cloudflare DNS 申请证书
 ~/.acme.sh/acme.sh --issue --dns dns_cf -d "$Domain" --keylength ec-256
 
