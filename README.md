@@ -21,22 +21,39 @@ Cloudflare 的 API Token 是一串密钥，允许脚本自动操作你的 Cloudf
 ⚠️ 它只需要有「编辑 DNS 记录」权限，不必给整个账号权限。
 
 ## 🧭 二、获取步骤（新版界面）
+
 ① 登录 Cloudflare 控制台
 
 👉 https://dash.cloudflare.com/profile/api-tokens
 
+<br>
+
 ② 点击 “创建令牌”
+
+<br>
+
 ③ 选择模板：
 
 在“API 令牌模板”中，找到
+
 “编辑区域 DNS”
+
 然后点 “使用模板”
 
+<br>
+
 ④ 设置权限与范围：
+
 “特定区域”改为“所有区域”
+
 其他内容保持默认即可
 
+<br>
+
 ⑤ 点击底部的 “继续以显示摘要”
+
+<br>
+
 ⑥ 复制生成的 Token，一串字母数字，比如：
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZ...
 
