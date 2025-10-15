@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "============================"
+echo " Cloudflare DNS 签发证书"
+echo "============================"
+
 echo "=== Cloudflare DNS-01 一键签证书脚本 ==="
 read -p "请输入 Cloudflare API Token: " CF_Token
 read -p "请输入要签发的域名（如 example.com）: " Domain
