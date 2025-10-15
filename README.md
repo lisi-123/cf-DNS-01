@@ -6,10 +6,6 @@ wget -O cf-dns.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-d
 
 <br>
 
-## 签发证书并自动修改vless配置
-```bash
-wget -O cf-dns1.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-dns1.sh && chmod +x cf-dns1.sh && ./cf-dns1.sh
-```
 
 ## 🧩 一、Cloudflare API Token 是什么
 
@@ -67,6 +63,18 @@ Cloudflare API Token: _v50mev50me.......
 <br>
 
 
+
+## 一键签发证书并自动修改vless配置
+```bash
+wget -O cf-dns1.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-dns1.sh && chmod +x cf-dns1.sh && ./cf-dns1.sh
+```
+
+使用方法：首先安装v2bx并搭一个vless协议，tls设置可以不用做。然后执行脚本，脚本签好证书后会自动修改v2bx的vless配置，让tls生效
+
+使用限制：会修改所有vless协议的证书配置，但是不影响vless之外的协议。
+
+
+<br>
 
 ## 如果要卸载，请执行
 
