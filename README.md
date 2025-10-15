@@ -75,7 +75,7 @@ wget -O cf-dns1.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后执行脚本，脚本签好证书后会自动修改v2bx的vless配置，让tls生效。
 
-使用限制：会修改所有vless协议的证书配置，但是不影响vless之外的协议。
+使用说明：会修改所有vless协议的证书配置，但是不影响vless之外的协议。
 
 
 <br>
