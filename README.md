@@ -6,6 +6,10 @@ wget -O cf-dns.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-d
 
 <br>
 
+## 签发证书并自动修改vless配置
+```bash
+wget -O cf-dns1.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-dns1.sh && chmod +x cf-dns1.sh && ./cf-dns1.sh
+```
 
 ## 🧩 一、Cloudflare API Token 是什么
 
