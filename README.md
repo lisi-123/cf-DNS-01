@@ -20,7 +20,7 @@ wget -O cf-dns1.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-
 ```
 
 使用方法：
-首先安装v2bx并搭一个vless协议，其他内容正常填写，tls相关设置随便填，图方便可以选reality，反正之后脚本会把它改掉。然后执行脚本，脚本签好证书后会自动修改v2bx的vless配置，让tls生效。
+首先安装v2bx并搭一个vless协议，前面的内容正常填写，reality和tls全部n就行了。然后执行脚本，脚本签好证书后会自动修改v2bx的vless配置，让tls生效。
 
 使用说明：
 会修改所有vless协议的证书配置，但是不影响vless之外的协议。
