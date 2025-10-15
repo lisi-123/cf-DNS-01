@@ -59,25 +59,29 @@ fi
 CONFIG_FILE="/etc/V2bX/config.json"
 BACKUP_FILE="/etc/V2bX/config.json.bak_$(date +%F_%H-%M-%S)"
 
-if [ -f "$CONFIG_FILE" ]; then
-    echo "[+] 备份原配置文件到 $BACKUP_FILE"
-    cp "$CONFIG_FILE" "$BACKUP_FILE"
+jq --arg domain "$Domain" \
+   --arg cert "$CERT_FILE" \
+   --arg key "$KEY_FILE" \
+   '
+   if type == "array" then
+       map(if .NodeType == "vless" then
+           .CertConfig.CertMode = "self" |
+           .CertConfig.CertDomain = $domain |
+           .CertConfig.CertFile = $cert |
+           .CertConfig.KeyFile = $key
+       else . end)
+   elif type == "object" and .Nodes then
+       .Nodes |= map(if .NodeType == "vless" then
+           .CertConfig.CertMode = "self" |
+           .CertConfig.CertDomain = $domain |
+           .CertConfig.CertFile = $cert |
+           .CertConfig.KeyFile = $key
+       else . end)
+   else
+       .
+   end
+   ' "$CONFIG_FILE" > /tmp/config.json && mv /tmp/config.json "$CONFIG_FILE"
 
-    echo "[+] 更新 V2bX 配置中 NodeType = vless 的节点证书..."
-    jq --arg domain "$Domain" \
-       --arg cert "$CERT_FILE" \
-       --arg key "$KEY_FILE" \
-       'map(if .NodeType == "vless" then
-            .CertConfig.CertMode = "self" |
-            .CertConfig.CertDomain = $domain |
-            .CertConfig.CertFile = $cert |
-            .CertConfig.KeyFile = $key
-          else . end)' "$CONFIG_FILE" > /tmp/config.json && mv /tmp/config.json "$CONFIG_FILE"
-
-    echo "[+] 已成功更新 V2bX 配置文件。"
-else
-    echo "[!] 未找到 /etc/V2bX/config.json，跳过修改。"
-fi
 
 # 重启 V2bX
 systemctl restart V2bX
