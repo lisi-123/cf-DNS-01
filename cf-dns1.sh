@@ -79,6 +79,9 @@ else
     echo "[!] 未找到 /etc/V2bX/config.json，跳过修改。"
 fi
 
+# 重启 V2bX
+systemctl restart V2bX
+
 echo
 echo "=== 签发完成！证书路径如下 ==="
 echo "CertFile: $CERT_FILE"
