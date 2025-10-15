@@ -1,3 +1,5 @@
+第二个脚本在第一个脚本的基础上加了点功能，根据需求二选一执行，不需要全部执行。
+
 ## 托管cloudflare的域名使用 DNS 签发证书
 
 ```bash
@@ -7,6 +9,21 @@ wget -O cf-dns.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-d
 
 <br>
 
+
+
+## 托管cloudflare的域名使用 DNS 签发证书+自动修改vless配置
+```bash
+wget -O cf-dns1.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-dns1.sh && chmod +x cf-dns1.sh && ./cf-dns1.sh
+
+```
+
+使用方法：
+首先安装v2bx并搭一个vless协议，其他内容正常填写，tls相关设置随便填，图方便可以选reality，反正之后脚本会把它改掉。然后执行脚本，脚本签好证书后会自动修改v2bx的vless配置，让tls生效。
+
+使用说明：
+会修改所有vless协议的证书配置，但是不影响vless之外的协议。
+
+<br>
 
 ## 🧩 一、Cloudflare API Token 是什么
 
@@ -60,22 +77,6 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZ...
 这个就是脚本要填入的：
 
 Cloudflare API Token: _v50mev50me.......
-
-<br>
-
-
-
-## 一键签发证书并自动修改vless配置
-```bash
-wget -O cf-dns1.sh https://raw.githubusercontent.com/lisi-123/cf-DNS-01/main/cf-dns1.sh && chmod +x cf-dns1.sh && ./cf-dns1.sh
-
-```
-
-使用方法：
-首先安装v2bx并搭一个vless协议，其他内容正常填写，tls相关设置随便填，图方便可以选reality，反正之后脚本会把它改掉。然后执行脚本，脚本签好证书后会自动修改v2bx的vless配置，让tls生效。
-
-使用说明：
-会修改所有vless协议的证书配置，但是不影响vless之外的协议。
 
 
 <br>
